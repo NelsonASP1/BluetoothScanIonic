@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Bluetooth Scan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Paired Devices</ion-label>
+    </ion-list-header>
+    
+    <ion-item *ngFor="let device of pairedDevices">
+      <ion-label>
+        <h2>{{device.name || 'N/N'}}</h2>
+        <p>{{device.address}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Scanned Devices</ion-label>
+    </ion-list-header>
+    
+    <ion-item *ngFor="let device of scannedDevices">
+      <ion-label>
+        <h2>{{device.name || 'N/N'}}</h2>
+        <p>{{device.address}}</p>
+      </ion-label>
+      <ion-button slot="end" (click)="pairDevice(device)">Pair</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="enableBluetooth()" expand="block" color="primary">
+        <ion-icon name="bluetooth"></ion-icon>
+        Enable/Scan
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="center">
+      <ion-button (click)="stopScan()" expand="block" color="danger">
+        <ion-icon name="stop-circle"></ion-icon>
+        Stop
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="startServer()" expand="block" color="success">
+        <ion-icon name="share"></ion-icon>
+        Start Server
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

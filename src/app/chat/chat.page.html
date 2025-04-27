@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ device?.name || 'Chat' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="chat-container">
+    <div *ngFor="let message of messages" [class.sent]="message.sent" class="message">
+     {{ message.text }}
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-input [(ngModel)]="newMessage" placeholder="Type a message..."></ion-input>
+    <ion-buttons slot="end">
+      
+       
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
